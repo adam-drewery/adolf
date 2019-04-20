@@ -1,6 +1,7 @@
 using System.Linq;
 
-namespace Adolf.Extensions {
+namespace Adolf.Extensions
+{
     public static class StringExtensions
     {
         public static int LineCount(this string source)

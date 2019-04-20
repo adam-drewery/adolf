@@ -6,13 +6,13 @@ namespace Adolf
 {
     public class Settings
     {
-        public Settings(string url, string token)
+        public Settings(Uri url, string token)
         {
             Url = url;
             Token = token;
         }
 
-        public string Url { get;  }
+        public Uri Url { get;  }
 
         public string Token { get; }
 
@@ -28,12 +28,12 @@ namespace Adolf
             var bytes = Convert.FromBase64String(base64);
             var text = Encoding.UTF8.GetString(bytes);
             var split = text.Split('|');
-            return new Settings(split[0], split[1]);
+            return new Settings(new Uri(split[0]), split[1]);
         }
 
         public void Save()
         {
-            var bytes = Encoding.UTF8.GetBytes(Url + '|' + Token);
+            var bytes = Encoding.UTF8.GetBytes(Url.ToString() + '|' + Token);
             var text = Convert.ToBase64String(bytes);
             File.WriteAllText(FileName, text);
         }

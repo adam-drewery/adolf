@@ -2,7 +2,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Adolf.Attributes;
 using Adolf.Controls.WorkItems;
-using Adolf.Extensions;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
 using Terminal.Gui;
 
@@ -24,20 +23,20 @@ namespace Adolf.Commands
             // Get the specified work item
             // Why do i need to use Task.Run :(
             var workItem = Task.Run(async () => await witClient.GetWorkItemAsync(WorkItemId)).Result;
+            var comments = Task.Run(async () => await witClient.GetCommentsAsync(WorkItemId)).Result;
             
             Application.Top.Add(WorkItemMenu.For(workItem).ToArray());
+            
             var windows = new View[]
             {
                 new DescriptionWindow(workItem),
                 new AcceptanceCriteriaWindow(workItem),                
-                new QuestionsClarificationsWindow(workItem),
-                new FieldsWindow(workItem) 
+                new QuestionsClarificationsWindow(workItem),                
+                new CommentsWindow(workItem, comments), 
+                new FieldsWindow(workItem),
             };
             
-            Application.Top.Add(windows);
-
-            Application.Top.SetFocus<DescriptionWindow>();
-            
+            Application.Top.Add(windows);            
             return Task.CompletedTask;
         }
     }

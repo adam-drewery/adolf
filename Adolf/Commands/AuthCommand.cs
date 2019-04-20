@@ -24,7 +24,7 @@ namespace Adolf.Commands
             var witClient = connection.GetClient<ProjectHttpClient>();
             Task.Run(async () => await witClient.GetProjects()).Wait();
 
-            var settings = new Settings(Url, Token);
+            var settings = new Settings(uri, Token);
             settings.Save();
 
             Console.WriteLine("Settings saved successfully");

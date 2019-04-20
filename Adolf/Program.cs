@@ -15,8 +15,8 @@ namespace Adolf
         
         public static ColorScheme ColorScheme { get; private set; }
 
-        public static View CurrentWindow { get; set; }
-        
+        public static Uri Url { get; private set; }
+                
         public static async Task Main(string[] args)
         {
             Application.Init();
@@ -40,8 +40,9 @@ namespace Adolf
             } 
             
             var settings = Settings.Load();
+            Url = settings.Url;
             
-            Api = new VssConnection(new Uri(settings.Url), new VssBasicCredential(string.Empty, settings.Token));
+            Api = new VssConnection(settings.Url, new VssBasicCredential(string.Empty, settings.Token));
             await command.Execute();
             
             Application.Run();
