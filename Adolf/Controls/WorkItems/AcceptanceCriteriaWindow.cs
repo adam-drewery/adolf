@@ -1,3 +1,4 @@
+using System;
 using Adolf.Extensions;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
 using Terminal.Gui;
@@ -19,7 +20,7 @@ namespace Adolf.Controls.WorkItems
                 Width = Dim.Fill(),
                 Height = Dim.Fill(),
                 ColorScheme = Program.ColorScheme,
-                Text = workItem.AcceptanceCriteria(), 
+                Text = workItem.AcceptanceCriteria(),//.WordWrap(Console.WindowWidth - 2), 
                 ReadOnly = true                
             });
         }        

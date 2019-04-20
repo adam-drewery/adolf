@@ -16,26 +16,23 @@ namespace Adolf.Controls.WorkItems
             Height = Dim.Fill();
             ColorScheme = Program.ColorScheme;
 
-            var list = new ListView
+            var items = comments.Comments
+                .SelectMany(c => new[]
+                {
+                    Environment.NewLine + c.RevisedBy.Name + " " + c.RevisedDate.ToLongTimeString() +  " " + c.RevisedDate.ToLongDateString(),
+                    Html.Clean(c.Text).WordWrap(Console.WindowWidth - 2),
+                    string.Empty
+                })
+                .ToList();
+
+            var list = new TextView
             {
                 Width = Dim.Fill(),
                 Height = Dim.Fill(),
                 ColorScheme = Program.ColorScheme,
-                CanFocus = true
+                CanFocus = true,
+                Text = string.Join(Environment.NewLine, items)
             };
-
-            var items = comments.Comments
-                .SelectMany(c =>
-                    new[]
-                    {
-                        string.Empty,
-                        c.RevisedBy.Name +  " " + c.RevisedDate.ToLongTimeString(),
-                        Html.Clean(c.Text)
-                    }
-                )
-                .ToList();
-
-            list.SetSource(items);
 
             Add(list);
         }

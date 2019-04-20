@@ -13,9 +13,6 @@ namespace Adolf
 
             inputString = HttpUtility.HtmlDecode(inputString);
 
-            inputString = inputString
-                .Replace(Environment.NewLine + Environment.NewLine, Environment.NewLine);
-
             return Regex.Replace
                 (inputString, "<.*?>", string.Empty);
         }
