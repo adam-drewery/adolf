@@ -24,8 +24,8 @@ namespace Adolf.Commands
             var witClient = connection.GetClient<ProjectHttpClient>();
             Task.Run(async () => await witClient.GetProjects()).Wait();
 
-            var text = Convert.ToBase64String(Encoding.UTF8.GetBytes(Url + '|' + Token));
-            File.WriteAllText("adolf.cfg", text);
+            var settings = new Settings(Url, Token);
+            settings.Save();
 
             Console.WriteLine("Settings saved successfully");
 
