@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<LangVersion>7.3</LangVersion>
+		<AssemblyName>Adolf</AssemblyName>
+		<RootNamespace>Adolf</RootNamespace>
+		<PackageId>Adolf</PackageId>
+		<Authors>Adam Drewery</Authors>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PackageTargetFallback>portable-net451+win8</PackageTargetFallback>
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+	  <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="15.131.1" />
+	  <PackageReference Include="Terminal.Gui" Version="0.21.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="System.Net.Http.WebRequest, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+	    <HintPath>..\..\..\..\..\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Net.Http.WebRequest.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Web" />
+	</ItemGroup>
+
+</Project>
