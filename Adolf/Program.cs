@@ -15,11 +15,12 @@ namespace Adolf
         
         public static ColorScheme ColorScheme { get; private set; }
 
-        public static Uri Url { get; private set; }
+        public static Settings Settings { get; private set; }
                 
         public static async Task Main(string[] args)
         {
             Application.Init();
+            Application.Top.WantMousePositionReports = false;
             
             ColorScheme = new ColorScheme
             {
@@ -33,14 +34,14 @@ namespace Adolf
             
             var command = Command.Load(args);
 
-            if (command is AuthCommand)
+            if (command is SettingsCommand)
             { // Special case for AuthCommand, since it doesn't rely on a valid settings file to work.
                 await command.Execute();
                 return;
             } 
             
             var settings = Settings.Load();
-            Url = settings.Url;
+            Settings = settings;
             
             Api = new VssConnection(settings.Url, new VssBasicCredential(string.Empty, settings.Token));
             await command.Execute();

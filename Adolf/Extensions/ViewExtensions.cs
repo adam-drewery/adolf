@@ -10,6 +10,10 @@ namespace Adolf.Extensions
             ?? parent.Subviews.SelectMany(v => v.Subviews).SingleOrDefault(v => v is T)
             ?? throw new KeyNotFoundException("Failed to find a child view of type " + typeof(T).Name);
         
-        public static void SetFocus<T>(this View parent) => parent.SetFocus(Application.Top.View<T>());
+        public static void SetFocus<T>(this View parent)
+        {
+            var window = Application.Top.View<T>();
+            parent.SetFocus(window);
+        }
     }
 }

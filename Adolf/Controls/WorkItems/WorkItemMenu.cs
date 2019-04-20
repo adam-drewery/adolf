@@ -43,7 +43,7 @@ namespace Adolf.Controls.WorkItems
                     Label = "Web",
                     Clicked = new Action(() =>
                     {
-                        var url = new Uri(Program.Url, $"{item.TeamProject()}/_workitems/edit/{item.Id}/");
+                        var url = new Uri(Program.Settings.Url, $"{item.TeamProject()}/_workitems/edit/{item.Id}/");
                         Process.Start(url.ToString());
                     })
                 },

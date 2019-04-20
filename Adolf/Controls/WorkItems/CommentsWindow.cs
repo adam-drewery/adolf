@@ -8,7 +8,7 @@ namespace Adolf.Controls.WorkItems
 {
     public sealed class CommentsWindow : Window
     {
-        public CommentsWindow(WorkItem workItem, WorkItemComments comments) : base("[#" + workItem.Id + "] " + workItem.CommentCount() + " - " + "Comments")
+        public CommentsWindow(WorkItem workItem, WorkItemComments comments) : base("[#" + workItem.Id + "] " + workItem.Title() + " - " + "Comments")
         {
             X = 0;
             Y = 2; // Leave one row for the toplevel menu
