@@ -8,12 +8,15 @@ using Attribute = Terminal.Gui.Attribute;
 
 namespace Adolf
 {
+    
     public static class Program
     {
         public static VssConnection Api { get; private set; }
         
         public static ColorScheme ColorScheme { get; private set; }
 
+        public static View CurrentWindow { get; set; }
+        
         public static async Task Main(string[] args)
         {
             Application.Init();

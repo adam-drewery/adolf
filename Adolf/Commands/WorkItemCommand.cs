@@ -31,7 +31,7 @@ namespace Adolf.Commands
                 new DescriptionWindow(workItem),
                 new AcceptanceCriteriaWindow(workItem),                
                 new QuestionsClarificationsWindow(workItem),
-                new ScrollViewFieldsWindow(workItem) 
+                new FieldsWindow(workItem) 
             };
             
             Application.Top.Add(windows);

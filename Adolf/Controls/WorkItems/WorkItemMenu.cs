@@ -15,7 +15,7 @@ namespace Adolf.Controls.WorkItems
                 new
                 {
                     Label = "Fields (" + item.Fields.Count + ")",
-                    Action = new Action(() => Application.Top.SetFocus<ScrollViewFieldsWindow>())
+                    Action = new Action(() => Application.Top.SetFocus<FieldsWindow>())
                 },
                 new
                 {
