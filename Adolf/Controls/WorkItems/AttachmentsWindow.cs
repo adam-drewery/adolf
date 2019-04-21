@@ -20,11 +20,11 @@ namespace Adolf.Controls.WorkItems
             {
                 Width = Dim.Fill(),
                 Height = Dim.Fill(),
-                ColorScheme = Program.ColorScheme
+                CanFocus = true
             };
 
-            var items = workItem.Links.Links.Keys.ToList();
-            list.SetSource(items);
+            var items = workItem.Attachments().Select(a => a.Attributes["name"]);            
+            list.SetSource(new[] {string.Empty}.Concat(items).ToList());
             
             Add(list);
         }

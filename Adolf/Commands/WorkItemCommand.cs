@@ -41,7 +41,7 @@ namespace Adolf.Commands
 
             // Get the specified work item
             // Why do i need to use Task.Run :(
-            var workItem = Task.Run(async () => await witClient.GetWorkItemAsync(WorkItemId, expand: WorkItemExpand.Relations)).Result;
+            var workItem = Task.Run(async () => await witClient.GetWorkItemAsync(WorkItemId, expand: WorkItemExpand.All)).Result;
             var comments = Task.Run(async () => await witClient.GetCommentsAsync(WorkItemId)).Result;
 
             Application.Top.Add(WorkItemMenu.For(workItem).ToArray());
@@ -52,6 +52,7 @@ namespace Adolf.Commands
                 new AcceptanceCriteriaWindow(workItem),
                 new QuestionsClarificationsWindow(workItem),
                 new CommentsWindow(workItem, comments),
+                new AttachmentsWindow(workItem), 
                 new FieldsWindow(workItem),
             };
 

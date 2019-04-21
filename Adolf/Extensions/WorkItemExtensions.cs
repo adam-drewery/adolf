@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
 
@@ -58,5 +59,7 @@ namespace Adolf.Extensions
             .Select(s => s.TrimEnd(' '))
             .Where(s => !string.IsNullOrWhiteSpace(s))
             .ToArray();
+
+        public static IEnumerable<WorkItemRelation> Attachments(this WorkItem workItem) => workItem.Relations.Where(r => r.Rel == "AttachedFile");
     }
 }
