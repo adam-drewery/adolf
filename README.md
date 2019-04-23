@@ -1,6 +1,6 @@
 ## Adolf.NET: Azure DevOps Lightweight Feed
 
-#####A terminal client for Azure DevOps
+##### A terminal client for Azure DevOps
 
 ---
 
